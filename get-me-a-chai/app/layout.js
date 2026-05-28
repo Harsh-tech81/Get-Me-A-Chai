@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import SessionWrapper from "@/components/SessionWrapper";
 import Footer from "@/components/Footer";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +27,13 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         {" "}
+        <SessionWrapper>
         <Navbar />
         <div className="min-h-[85vh] bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
           {children}
         </div>
         <Footer />{" "}
+        </SessionWrapper>
       </body>
     </html>
   );
