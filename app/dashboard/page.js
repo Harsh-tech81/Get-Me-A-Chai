@@ -1,23 +1,15 @@
-"use client"
-import React, { useEffect } from 'react'
+"use client";
+import React from "react";
 import { useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { useSession,signIn,signOut } from "next-auth/react";
 function Dashboard() {
-  const router = useRouter();
-  const { data: session, status } = useSession();
+const router=useRouter();
+  const { data: session } = useSession();
+  if(!session){
+    router.push("/login");
+  }
 
-  useEffect(() => {
-    if (status === "loading") return;
-    if (!session) {
-      router.push("/login");
-    }
-  }, [session, status, router]);
-
-  return (
-    <div>
-      This is Dashboard Page.
-    </div>
-  )
+  return <div>This is the Dashboard Page.</div>;
 }
 
-export default Dashboard
+export default Dashboard;
