@@ -15,7 +15,7 @@ function Dashboard() {
 
   return (
     <div>
-      This is the Dashboard Page.
+      This is Dashboard Page.
     </div>
   )
 }
