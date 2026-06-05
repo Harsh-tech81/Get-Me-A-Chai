@@ -25,10 +25,28 @@ export default async function Username({ params }) {
         <div className="payment flex gap-3 w-[80%] mt-11">
           <div className="supporters w-1/2 bg-slate-900 rounded-lg text-white p-10">
             <h2 className="text-2xl font-bold my-5">Supporters</h2>
-            <ul className="mx-5">
-              <li className="my-2">John Doe donated $30 with a message</li>
-              <li className="my-2">Jane Smith donated $50 with a message</li>
-              <li className="my-2">Bob Johnson donated $20 with a message</li>
+            <ul className="mx-5 text-sm">
+              <li className="my-4 flex gap-2 items-center">
+                <img width={33} src="/avatar.gif" alt="" />
+                <span>
+                  John Doe donated <span className="font-bold">$30</span> with a
+                  message "I support you bro!"
+                </span>
+              </li>
+              <li className="my-4 flex gap-2 items-center">
+                <img width={33} src="/avatar.gif" alt="" />
+                <span>
+                  John Doe donated <span className="font-bold">$30</span> with a
+                  message "I support you bro!"
+                </span>
+              </li>
+              <li className="my-4 flex gap-2 items-center">
+                <img width={33} src="/avatar.gif" alt="" />
+                <span>
+                  John Doe donated <span className="font-bold">$30</span> with a
+                  message "I support you bro!"
+                </span>
+              </li>
             </ul>
           </div>
           <div className="makePayment w-1/2 bg-slate-900 rounded-lg text-white p-10">
@@ -53,7 +71,7 @@ export default async function Username({ params }) {
               />
               <button
                 type="button"
-                className="w-fit text-white bg-gradient-to-br from-purple-900 to-blue-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center me-2 mb-2"
+                className=" text-white bg-gradient-to-br from-purple-900 to-blue-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-base text-sm px-4 py-2.5 text-center me-2 mb-2"
               >
                 Pay
               </button>
