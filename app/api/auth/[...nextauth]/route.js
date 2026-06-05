@@ -1,9 +1,12 @@
-import NextAuth from 'next-auth'
+import NextAuth from "next-auth";
 // import AppleProvider from 'next-auth/providers/apple'
 // import FacebookProvider from 'next-auth/providers/facebook'
 // import GoogleProvider from 'next-auth/providers/google'
 // import EmailProvider from 'next-auth/providers/email'
-import GitHubProvider from 'next-auth/providers/github'
+import GitHubProvider from "next-auth/providers/github";
+import mongoose from "mongoose";
+import User from "@/models/User.js";
+import Payment from "@/models/Payment.js";
 
 export const authOptions = {
   providers: [
@@ -16,15 +19,40 @@ export const authOptions = {
     //   clientId: process.env.GOOGLE_CLIENT_ID,
     //   clientSecret: process.env.GOOGLE_CLIENT_SECRET
     // }),
-   
+
     GitHubProvider({
       clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET
-    })
+      clientSecret: process.env.GITHUB_SECRET,
+    }),
   ],
-  secret: process.env.NEXTAUTH_SECRET
-}
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      if (account.provider === "github") {
+        // connect to database
+        const client = await mongoose.connect("mongodb://localhost:27017/chai");
+        // check if user exists
+        const existingUser = User.findOne({ email: email });
+        if (!existingUser) {
+          // create new user
+          const newUser = new User({
+            email: email,
+            username: email.split("@")[0],
+          });
+          await newUser.save();
+        }
+        return true;
+      }
+    },
+    async session({ session, token, user }) {
+      const dbUser = await User.findOne({ email: session.user.email });
+      session.user.name = dbUser.username;
+      return session;
+    },
+  },
 
-const handler = NextAuth(authOptions)
+  secret: process.env.NEXTAUTH_SECRET,
+};
 
-export { handler as GET, handler as POST }
+const handler = NextAuth(authOptions);
+
+export { handler as GET, handler as POST };

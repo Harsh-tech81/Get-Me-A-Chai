@@ -27,7 +27,7 @@ const Navbar = () => {
               onBlur={() => {
                 setTimeout(() => {
                   setShowdropdown(false);
-                }, 1000);
+                }, 300);
               }}
               id="dropdownDefaultButton"
               data-dropdown-toggle="dropdown"
