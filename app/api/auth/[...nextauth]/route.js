@@ -7,7 +7,7 @@ import GitHubProvider from "next-auth/providers/github";
 import mongoose from "mongoose";
 import User from "@/models/User.js";
 import Payment from "@/models/Payment.js";
-
+import connectDB from "@/db/connectDb.js";
 export const authOptions = {
   providers: [
     // OAuth authentication providers...
@@ -29,16 +29,15 @@ export const authOptions = {
     async signIn({ user, account, profile, email, credentials }) {
       if (account.provider === "github") {
         // connect to database
-        const client = await mongoose.connect("mongodb://localhost:27017/chai");
+        await connectDB();
         // check if user exists
-        const existingUser = User.findOne({ email: email });
+        const existingUser = await User.findOne({ email: email });
         if (!existingUser) {
           // create new user
-          const newUser = new User({
-            email: email,
-            username: email.split("@")[0],
-          });
-          await newUser.save();
+          const newUser = await User.create({
+            email: user.email,
+            username: user.email.split("@")[0],
+          })
         }
         return true;
       }
