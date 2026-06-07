@@ -31,7 +31,7 @@ export const authOptions = {
         // connect to database
         await connectDB();
         // check if user exists
-        const existingUser = await User.findOne({ email: email });
+        const existingUser = await User.findOne({ email: user.email });
         if (!existingUser) {
           // create new user
           const newUser = await User.create({
