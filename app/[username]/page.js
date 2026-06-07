@@ -15,9 +15,6 @@ console.log(username);
     }
   }
   await checkUser()
-
-
-
   return (
     <>
       <PaymentPage username={username} />

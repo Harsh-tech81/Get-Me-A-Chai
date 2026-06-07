@@ -102,9 +102,11 @@ const PaymentPage = ({ username }) => {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover={false}
+        pauseOnHover
         theme="light"
       />
+      {/* Same as */}
+      <ToastContainer />
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
       <div className="cover w-full bg-red-50 relative">
@@ -138,7 +140,7 @@ const PaymentPage = ({ username }) => {
                     <img width={33} src="avatar.gif" alt="user avatar" />
                     <span>
                       {p.name} donated{" "}
-                      <span className="font-bold">₹{p.amount}</span> with a
+                      <span className="font-bold">₹{p.amount}   </span> with a
                       message &quot;{p.message}&quot;
                     </span>
                   </li>

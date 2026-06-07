@@ -5,7 +5,6 @@ import Payment from "@/models/Payment"
 import connectDb from "@/db/connectDb"
 import User from "@/models/User"
 
-
 export const initiate = async (amount, to_username, paymentform) => {
     await connectDb()
     // fetch the secret of the user who is getting the payment 
@@ -13,23 +12,15 @@ export const initiate = async (amount, to_username, paymentform) => {
     const secret = user.razorpaysecret
 
     var instance = new Razorpay({ key_id: user.razorpayid, key_secret: secret })
-
-
-
     let options = {
         amount: Number.parseInt(amount),
         currency: "INR",
     }
-
     let x = await instance.orders.create(options)
-
     // create a payment object which shows a pending payment in the database
     await Payment.create({ oid: x.id, amount: amount/100, to_user: to_username, name: paymentform.name, message: paymentform.message })
-
     return x
-
 }
-
 
 export const fetchuser = async (username) => {
     await connectDb()
@@ -58,13 +49,8 @@ export const updateProfile = async (data, oldusername) => {
         await User.updateOne({email: ndata.email}, ndata)
         // Now update all the usernames in the Payments table 
         await Payment.updateMany({to_user: oldusername}, {to_user: ndata.username})
-        
     }
     else{
-
-        
         await User.updateOne({email: ndata.email}, ndata)
     }
-
-
 }
