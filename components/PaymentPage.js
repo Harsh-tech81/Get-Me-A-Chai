@@ -40,9 +40,9 @@ const PaymentPage = ({ username }) => {
         theme: "light",
         transition: Bounce,
       });
+      router.replace(`/${username}`);
     }
-    router.push(`/${username}`);
-  }, []);
+  }, [searchParams, router, username]);
 
   const handleChange = (e) => {
     setPaymentform({ ...paymentform, [e.target.name]: e.target.value });
@@ -70,14 +70,14 @@ const PaymentPage = ({ username }) => {
       currency: "INR",
       name: "Get Me A Chai", //your business name
       description: "Test Transaction",
-      image: "https://example.com/your_logo",
+      image: "/logo5.jpg",
       order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
       callback_url: `${process.env.NEXT_PUBLIC_URI}/api/razorpay`,
       prefill: {
         //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-        name: "Gaurav Kumar", //your customer's name
-        email: "gaurav.kumar@example.com",
-        contact: "9000090000", //Provide the customer's phone number for better conversion rates
+        name: "Harsh Kumar", //your customer's name
+        email: "harshkr.221104@gmail.com",
+        contact: "+91-8986371311", //Provide the customer's phone number for better conversion rates
       },
       notes: {
         address: "Razorpay Corporate Office",
@@ -102,18 +102,16 @@ const PaymentPage = ({ username }) => {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover
+        pauseOnHover={false}
         theme="light"
       />
-      {/* Same as */}
-      <ToastContainer />
       <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
 
-      <div className="cover w-[100%] bg-red-50 relative">
+      <div className="cover w-full bg-red-50 relative">
         <img className="w-full h-[650] object-cover" src="/Home1.avif" />
         <div className="absolute -bottom-20 right-[46%] border-white border-2 rounded-full">
           <img
-            className="rounded-full object-cover w-[150px] h-[150px]"
+            className="rounded-full object-cover w-37.5 h-37.5"
             width={150}
             height={150}
             src="/logo5.jpg"
@@ -184,7 +182,7 @@ const PaymentPage = ({ username }) => {
               <button
                 onClick={() => pay(Number.parseInt(paymentform.amount) * 100)}
                 type="button"
-                className="text-white bg-gradient-to-br from-purple-900 to-blue-900 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 disabled:bg-slate-600 disabled:from-purple-100"
+                className="text-white bg-linear-to-br from-purple-900 to-blue-900 hover:bg-linear-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 disabled:bg-slate-600 disabled:from-purple-100"
                 disabled={
                   paymentform.name?.length < 3 ||
                   paymentform.message?.length < 4 ||
