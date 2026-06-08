@@ -122,6 +122,22 @@ npm start
 
 ---
 
+## Screenshots
+
+Add your screenshots to:
+
+- `public/screenshots/`
+
+Then update or keep the sample links below.
+
+### Dashboard page
+
+![Admin Dashboard](public/screenshots/Dashboard.png)
+
+### Home Page 1 
+
+![Admin Dashboard](public/screenshots/Home.png)
+
 ## 🛡️ License
 
 Distributed under the MIT License. See `LICENSE` for more information.
