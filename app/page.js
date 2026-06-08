@@ -86,7 +86,7 @@ export default function Home() {
         <h1 className="my-5 text-center text-2xl font-bold sm:text-3xl">
           Learn more about us
         </h1>
-        <div className="w-full max-w-4xl overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/30">
+        <div className="w-full max-w-3xl overflow-hidden rounded-2xl border border-white/10 shadow-2xl shadow-black/30">
           <div className="relative w-full pb-[56.25%]">
             <iframe
               className="absolute left-0 top-0 h-full w-full"

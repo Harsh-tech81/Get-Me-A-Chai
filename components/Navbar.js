@@ -16,7 +16,7 @@ const Navbar = () => {
           href="/"
           onClick={() => setMobileMenuOpen(false)}
         >
-          <img className="invertImg" src="tea.gif" width={44} alt="" />
+          <img className="invertImg" src="/tea.gif" width={44} alt="" />
           <span className="text-lg md:text-base">Get Me a Chai!</span>
         </Link>
 
