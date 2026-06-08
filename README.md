@@ -119,41 +119,7 @@ Generate optimized production bundles:
 npm run build
 npm start
 ```
-
 ---
-
-## Screenshots
-
-### Dashboard page
-
-![Admin Dashboard](public/screenshots/Dashboard.png)
-
-### Home Page 1 
-
-![Admin Dashboard](public/screenshots/Home.png)
-
-### UserName page
-
-![Admin Dashboard](public/screenshots/username.png)
-
-### Home Page 2
-
-![Admin Dashboard](public/screenshots/Home2.png)
-
-## Responsive Screenshots
-
-### Home Page 1
-
-![Admin Dashboard](public/screenshots/resHome.png)
-
-### UserName page
-
-![Admin Dashboard](public/screenshots/resUser.png)
-
-### Home Page 2
-
-![Admin Dashboard](public/screenshots/resVideo.png)
-
 
 ## 🛡️ License
 
